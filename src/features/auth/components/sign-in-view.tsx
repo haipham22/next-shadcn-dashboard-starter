@@ -1,25 +1,24 @@
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { SignIn as ClerkSignInForm } from '@clerk/nextjs';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { IconStar } from '@tabler/icons-react';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { Metadata } from 'next'
+import Link from 'next/link'
+
+import { SignIn as ClerkSignInForm } from '@clerk/nextjs'
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { IconStar } from '@tabler/icons-react'
+
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'Authentication',
-  description: 'Authentication forms built using the components.'
-};
+  description: 'Authentication forms built using the components.',
+}
 
 export default function SignInViewPage({ stars }: { stars: number }) {
   return (
     <div className='relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
       <Link
         href='/examples/authentication'
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute top-4 right-4 hidden md:top-8 md:right-8'
-        )}
+        className={cn(buttonVariants({ variant: 'ghost' }), 'absolute top-4 right-4 hidden md:top-8 md:right-8')}
       >
         Login
       </Link>
@@ -43,9 +42,8 @@ export default function SignInViewPage({ stars }: { stars: number }) {
         <div className='relative z-20 mt-auto'>
           <blockquote className='space-y-2'>
             <p className='text-lg'>
-              &ldquo;This starter template has saved me countless hours of work
-              and helped me deliver projects to my clients faster than ever
-              before.&rdquo;
+              &ldquo;This starter template has saved me countless hours of work and helped me deliver projects to my
+              clients faster than ever before.&rdquo;
             </p>
             <footer className='text-sm'>Random Dude</footer>
           </blockquote>
@@ -73,23 +71,17 @@ export default function SignInViewPage({ stars }: { stars: number }) {
           </Link>
           <ClerkSignInForm
             initialValues={{
-              emailAddress: 'your_mail+clerk_test@example.com'
+              emailAddress: 'your_mail+clerk_test@example.com',
             }}
           />
 
           <p className='text-muted-foreground px-8 text-center text-sm'>
             By clicking continue, you agree to our{' '}
-            <Link
-              href='/terms'
-              className='hover:text-primary underline underline-offset-4'
-            >
+            <Link href='/terms' className='hover:text-primary underline underline-offset-4'>
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link
-              href='/privacy'
-              className='hover:text-primary underline underline-offset-4'
-            >
+            <Link href='/privacy' className='hover:text-primary underline underline-offset-4'>
               Privacy Policy
             </Link>
             .
@@ -97,5 +89,5 @@ export default function SignInViewPage({ stars }: { stars: number }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

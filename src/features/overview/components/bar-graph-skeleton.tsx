@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 export function BarGraphSkeleton() {
   return (
@@ -29,12 +29,12 @@ export function BarGraphSkeleton() {
               key={i}
               className='w-full'
               style={{
-                height: `${Math.max(20, Math.random() * 100)}%`
+                height: `${Math.max(20, Math.random() * 100)}%`,
               }}
             />
           ))}
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

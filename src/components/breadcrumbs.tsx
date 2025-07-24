@@ -1,19 +1,22 @@
-'use client';
+'use client'
+
+import { Fragment } from 'react'
+
+import { IconSlash } from '@tabler/icons-react'
+
+import { useBreadcrumbs } from '@/hooks/use-breadcrumbs'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb';
-import { useBreadcrumbs } from '@/hooks/use-breadcrumbs';
-import { IconSlash } from '@tabler/icons-react';
-import { Fragment } from 'react';
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 
 export function Breadcrumbs() {
-  const items = useBreadcrumbs();
-  if (items.length === 0) return null;
+  const items = useBreadcrumbs()
+  if (items.length === 0) return null
 
   return (
     <Breadcrumb>
@@ -30,12 +33,10 @@ export function Breadcrumbs() {
                 <IconSlash />
               </BreadcrumbSeparator>
             )}
-            {index === items.length - 1 && (
-              <BreadcrumbPage>{item.title}</BreadcrumbPage>
-            )}
+            {index === items.length - 1 && <BreadcrumbPage>{item.title}</BreadcrumbPage>}
           </Fragment>
         ))}
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

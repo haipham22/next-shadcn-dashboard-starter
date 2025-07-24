@@ -1,12 +1,8 @@
-'use client';
+'use client'
 
-import { IconChevronRight } from '@tabler/icons-react';
+import { IconChevronRight } from '@tabler/icons-react'
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from '@/components/ui/collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -16,23 +12,23 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
-  SidebarMenuSubItem
-} from '@/components/ui/sidebar';
-import { Icon } from '@/components/icons';
+  SidebarMenuSubItem,
+} from '@/components/ui/sidebar'
+import { Icon } from '@/components/icons'
 
 export function NavMain({
-  items
+  items,
 }: {
   items: {
-    title: string;
-    url: string;
-    icon?: Icon;
-    isActive?: boolean;
+    title: string
+    url: string
+    icon?: Icon
+    isActive?: boolean
     items?: {
-      title: string;
-      url: string;
-    }[];
-  }[];
+      title: string
+      url: string
+    }[]
+  }[]
 }) {
   return (
     <SidebarGroup>
@@ -40,12 +36,7 @@ export function NavMain({
       <SidebarGroupContent className='flex flex-col gap-2'>
         <SidebarMenu>
           {items.map((item) => (
-            <Collapsible
-              key={item.title}
-              asChild
-              defaultOpen={item.isActive}
-              className='group/collapsible'
-            >
+            <Collapsible key={item.title} asChild defaultOpen={item.isActive} className='group/collapsible'>
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
@@ -76,5 +67,5 @@ export function NavMain({
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  );
+  )
 }

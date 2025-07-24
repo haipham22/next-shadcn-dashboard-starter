@@ -1,43 +1,25 @@
-'use client';
+'use client'
 
-import type { Table } from '@tanstack/react-table';
-import { Settings2 } from 'lucide-react';
+import * as React from 'react'
 
-import { Button } from '@/components/ui/button';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList
-} from '@/components/ui/command';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
-import * as React from 'react';
-import { CheckIcon, CaretSortIcon } from '@radix-ui/react-icons';
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import type { Table } from '@tanstack/react-table'
+import { Settings2 } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 interface DataTableViewOptionsProps<TData> {
-  table: Table<TData>;
+  table: Table<TData>
 }
 
-export function DataTableViewOptions<TData>({
-  table
-}: DataTableViewOptionsProps<TData>) {
+export function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps<TData>) {
   const columns = React.useMemo(
-    () =>
-      table
-        .getAllColumns()
-        .filter(
-          (column) =>
-            typeof column.accessorFn !== 'undefined' && column.getCanHide()
-        ),
-    [table]
-  );
+    () => table.getAllColumns().filter((column) => typeof column.accessorFn !== 'undefined' && column.getCanHide()),
+    [table],
+  )
 
   return (
     <Popover>
@@ -61,20 +43,10 @@ export function DataTableViewOptions<TData>({
             <CommandEmpty>No columns found.</CommandEmpty>
             <CommandGroup>
               {columns.map((column) => (
-                <CommandItem
-                  key={column.id}
-                  onSelect={() =>
-                    column.toggleVisibility(!column.getIsVisible())
-                  }
-                >
-                  <span className='truncate'>
-                    {column.columnDef.meta?.label ?? column.id}
-                  </span>
+                <CommandItem key={column.id} onSelect={() => column.toggleVisibility(!column.getIsVisible())}>
+                  <span className='truncate'>{column.columnDef.meta?.label ?? column.id}</span>
                   <CheckIcon
-                    className={cn(
-                      'ml-auto size-4 shrink-0',
-                      column.getIsVisible() ? 'opacity-100' : 'opacity-0'
-                    )}
+                    className={cn('ml-auto size-4 shrink-0', column.getIsVisible() ? 'opacity-100' : 'opacity-0')}
                   />
                 </CommandItem>
               ))}
@@ -83,5 +55,5 @@ export function DataTableViewOptions<TData>({
         </Command>
       </PopoverContent>
     </Popover>
-  );
+  )
 }

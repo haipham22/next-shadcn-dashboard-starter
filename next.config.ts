@@ -1,5 +1,6 @@
-import type { NextConfig } from 'next';
-import { withSentryConfig } from '@sentry/nextjs';
+import type { NextConfig } from 'next'
+
+import { withSentryConfig } from '@sentry/nextjs'
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
@@ -8,14 +9,14 @@ const baseConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'api.slingacademy.com',
-        port: ''
-      }
-    ]
+        port: '',
+      },
+    ],
   },
-  transpilePackages: ['geist']
-};
+  transpilePackages: ['geist'],
+}
 
-let configWithPlugins = baseConfig;
+let configWithPlugins = baseConfig
 
 // Conditionally enable Sentry configuration
 if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
@@ -36,7 +37,7 @@ if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
 
     // Upload a larger set of source maps for prettier stack traces (increases build time)
     reactComponentAnnotation: {
-      enabled: true
+      enabled: true,
     },
 
     // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
@@ -49,9 +50,9 @@ if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
     disableLogger: true,
 
     // Disable Sentry telemetry
-    telemetry: false
-  });
+    telemetry: false,
+  })
 }
 
-const nextConfig = configWithPlugins;
-export default nextConfig;
+const nextConfig = configWithPlugins
+export default nextConfig

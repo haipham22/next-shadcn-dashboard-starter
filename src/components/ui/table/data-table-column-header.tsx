@@ -1,27 +1,21 @@
-'use client';
+'use client'
 
-import type { Column } from '@tanstack/react-table';
-import { EyeOff } from 'lucide-react';
+import { CaretSortIcon, ChevronDownIcon, ChevronUpIcon, Cross2Icon } from '@radix-ui/react-icons'
+import type { Column } from '@tanstack/react-table'
+import { EyeOff } from 'lucide-react'
 
+import { cn } from '@/lib/utils'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { cn } from '@/lib/utils';
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  CaretSortIcon,
-  Cross2Icon
-} from '@radix-ui/react-icons';
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
-interface DataTableColumnHeaderProps<TData, TValue>
-  extends React.ComponentProps<typeof DropdownMenuTrigger> {
-  column: Column<TData, TValue>;
-  title: string;
+interface DataTableColumnHeaderProps<TData, TValue> extends React.ComponentProps<typeof DropdownMenuTrigger> {
+  column: Column<TData, TValue>
+  title: string
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -31,7 +25,7 @@ export function DataTableColumnHeader<TData, TValue>({
   ...props
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort() && !column.getCanHide()) {
-    return <div className={cn(className)}>{title}</div>;
+    return <div className={cn(className)}>{title}</div>
   }
 
   return (
@@ -39,7 +33,7 @@ export function DataTableColumnHeader<TData, TValue>({
       <DropdownMenuTrigger
         className={cn(
           'hover:bg-accent focus:ring-ring data-[state=open]:bg-accent [&_svg]:text-muted-foreground -ml-1.5 flex h-8 items-center gap-1.5 rounded-md px-2 py-1.5 focus:ring-1 focus:outline-none [&_svg]:size-4 [&_svg]:shrink-0',
-          className
+          className,
         )}
         {...props}
       >
@@ -73,10 +67,7 @@ export function DataTableColumnHeader<TData, TValue>({
               Desc
             </DropdownMenuCheckboxItem>
             {column.getIsSorted() && (
-              <DropdownMenuItem
-                className='[&_svg]:text-muted-foreground pl-2'
-                onClick={() => column.clearSorting()}
-              >
+              <DropdownMenuItem className='[&_svg]:text-muted-foreground pl-2' onClick={() => column.clearSorting()}>
                 <Cross2Icon />
                 Reset
               </DropdownMenuItem>
@@ -95,5 +86,5 @@ export function DataTableColumnHeader<TData, TValue>({
         )}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

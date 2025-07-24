@@ -1,12 +1,13 @@
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'
+
+import { auth } from '@clerk/nextjs/server'
 
 export default async function Dashboard() {
-  const { userId } = await auth();
+  const { userId } = await auth()
 
   if (!userId) {
-    return redirect('/auth/sign-in');
+    return redirect('/auth/sign-in')
   } else {
-    redirect('/dashboard/overview');
+    redirect('/dashboard/overview')
   }
 }

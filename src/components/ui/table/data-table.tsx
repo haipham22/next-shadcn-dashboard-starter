@@ -1,28 +1,18 @@
-import { type Table as TanstackTable, flexRender } from '@tanstack/react-table';
-import type * as React from 'react';
+import type * as React from 'react'
 
-import { DataTablePagination } from '@/components/ui/table/data-table-pagination';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import { getCommonPinningStyles } from '@/lib/data-table';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { flexRender, type Table as TanstackTable } from '@tanstack/react-table'
+
+import { getCommonPinningStyles } from '@/lib/data-table'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { DataTablePagination } from '@/components/ui/table/data-table-pagination'
 
 interface DataTableProps<TData> extends React.ComponentProps<'div'> {
-  table: TanstackTable<TData>;
-  actionBar?: React.ReactNode;
+  table: TanstackTable<TData>
+  actionBar?: React.ReactNode
 }
 
-export function DataTable<TData>({
-  table,
-  actionBar,
-  children
-}: DataTableProps<TData>) {
+export function DataTable<TData>({ table, actionBar, children }: DataTableProps<TData>) {
   return (
     <div className='flex flex-1 flex-col space-y-4'>
       {children}
@@ -38,15 +28,10 @@ export function DataTable<TData>({
                         key={header.id}
                         colSpan={header.colSpan}
                         style={{
-                          ...getCommonPinningStyles({ column: header.column })
+                          ...getCommonPinningStyles({ column: header.column }),
                         }}
                       >
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                        {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                       </TableHead>
                     ))}
                   </TableRow>
@@ -55,31 +40,22 @@ export function DataTable<TData>({
               <TableBody>
                 {table.getRowModel().rows?.length ? (
                   table.getRowModel().rows.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      data-state={row.getIsSelected() && 'selected'}
-                    >
+                    <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                       {row.getVisibleCells().map((cell) => (
                         <TableCell
                           key={cell.id}
                           style={{
-                            ...getCommonPinningStyles({ column: cell.column })
+                            ...getCommonPinningStyles({ column: cell.column }),
                           }}
                         >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </TableCell>
                       ))}
                     </TableRow>
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell
-                      colSpan={table.getAllColumns().length}
-                      className='h-24 text-center'
-                    >
+                    <TableCell colSpan={table.getAllColumns().length} className='h-24 text-center'>
                       No results.
                     </TableCell>
                   </TableRow>
@@ -92,10 +68,8 @@ export function DataTable<TData>({
       </div>
       <div className='flex flex-col gap-2.5'>
         <DataTablePagination table={table} />
-        {actionBar &&
-          table.getFilteredSelectedRowModel().rows.length > 0 &&
-          actionBar}
+        {actionBar && table.getFilteredSelectedRowModel().rows.length > 0 && actionBar}
       </div>
     </div>
-  );
+  )
 }
