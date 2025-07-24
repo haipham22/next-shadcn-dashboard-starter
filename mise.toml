@@ -1,2 +1,13 @@
 [tools]
 pnpm = "latest"
+
+[tasks.dev]
+run = "pnpm dev"
+
+[tasks.build]
+run = "pnpm build"
+
+[tasks.start]
+run = "pnpm start"
+
+[tasks.lint]

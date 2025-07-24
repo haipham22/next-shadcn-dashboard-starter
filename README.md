@@ -17,7 +17,8 @@ This is a starter template using the following stack:
 
 - Framework - [Next.js 15](https://nextjs.org/13)
 - Language - [TypeScript](https://www.typescriptlang.org)
-- Auth - [Clerk](https://go.clerk.com/ILdYhn7)
+- ~~Auth - [Clerk](https://go.clerk.com/ILdYhn7)~~
+- Authentication - [NextAuth.js](https://authjs.dev/getting-started/adapters/prisma) (for user management and authentication)
 - Error tracking - [<picture><img alt="Sentry" src="public/assets/sentry.svg">
   </picture>](https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy26q2-nextjs&utm_content=github-banner-project-tryfree)
 - Styling - [Tailwind CSS v4](https://tailwindcss.com)
@@ -109,7 +110,22 @@ To configure the environment for this project, refer to the `env.example.txt` fi
 
 You should now be able to access the application at http://localhost:3000.
 
-> [!WARNING]
-> After cloning or forking the repository, be cautious when pulling or syncing with the latest changes, as this may result in breaking conflicts.
+### Database Deployment
 
-Cheers! 🥂
+This will create the necessary tables in database for user authorization and user management apps :
+
+```bash
+pnpm run prisma db push
+```
+
+Once your schema is deployed, you need to generate the Prisma Client:
+
+```bash
+pnpm run prisma generate
+```
+
+Once you need create a new migration, you can run:
+
+```bash
+pnpm run prisma migrate dev --name <migration_name>
+```
