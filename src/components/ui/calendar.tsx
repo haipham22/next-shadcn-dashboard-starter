@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
 // Custom icons that meet the DayPicker requirements
-const LeftIcon = () => <ChevronLeftIcon className='size-4' />
-const RightIcon = () => <ChevronRightIcon className='size-4' />
+const LeftIcon = () => <ChevronLeftIcon className="size-4" />
+const RightIcon = () => <ChevronRightIcon className="size-4" />
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }: ComponentProps<typeof DayPicker>) {
   return (

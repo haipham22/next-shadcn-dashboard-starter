@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 const THEMES = { light: '', dark: '.dark' } as const
 
 export type ChartConfig = {
-  [key in string]: {
+  [k in string]: {
     label?: React.ReactNode
     icon?: React.ComponentType
   } & ({ color?: string; theme?: never } | { color?: never; theme: Record<keyof typeof THEMES, string> })
@@ -48,7 +48,7 @@ function ChartContainer({
   return (
     <ChartContext.Provider value={{ config }}>
       <div
-        data-slot='chart'
+        data-slot="chart"
         data-chart={chartId}
         className={cn(
           "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
@@ -57,8 +57,7 @@ function ChartContainer({
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        {/* adding debounce will fix chart laggy behavior while animating */}
-        <RechartsPrimitive.ResponsiveContainer debounce={2000}>{children}</RechartsPrimitive.ResponsiveContainer>
+        <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
       </div>
     </ChartContext.Provider>
   )
@@ -79,9 +78,9 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
             ([theme, prefix]) => `
 ${prefix} [data-chart=${id}] {
 ${colorConfig
-  .map(([configKey, itemConfig]) => {
+  .map(([key, itemConfig]) => {
     const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color
-    return color ? `  --color-${configKey}: ${color};` : null
+    return color ? `  --color-${key}: ${color};` : null
   })
   .join('\n')}
 }
@@ -155,7 +154,7 @@ function ChartTooltipContent({
       )}
     >
       {!nestLabel ? tooltipLabel : null}
-      <div className='grid gap-1.5'>
+      <div className="grid gap-1.5">
         {payload.map((item, index) => {
           const key = `${nameKey || item.name || item.dataKey || 'value'}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
@@ -196,12 +195,12 @@ function ChartTooltipContent({
                   <div
                     className={cn('flex flex-1 justify-between leading-none', nestLabel ? 'items-end' : 'items-center')}
                   >
-                    <div className='grid gap-1.5'>
+                    <div className="grid gap-1.5">
                       {nestLabel ? tooltipLabel : null}
-                      <span className='text-muted-foreground'>{itemConfig?.label || item.name}</span>
+                      <span className="text-muted-foreground">{itemConfig?.label || item.name}</span>
                     </div>
                     {item.value && (
-                      <span className='text-foreground font-mono font-medium tabular-nums'>
+                      <span className="text-foreground font-mono font-medium tabular-nums">
                         {item.value.toLocaleString()}
                       </span>
                     )}
@@ -250,7 +249,7 @@ function ChartLegendContent({
               <itemConfig.icon />
             ) : (
               <div
-                className='h-2 w-2 shrink-0 rounded-[2px]'
+                className="h-2 w-2 shrink-0 rounded-[2px]"
                 style={{
                   backgroundColor: item.color,
                 }}

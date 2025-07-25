@@ -32,26 +32,26 @@ export default function NewTaskDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant='secondary' size='sm'>
+        <Button variant="secondary" size="sm">
           ＋ Add New Todo
         </Button>
       </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
+      <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add New Todo</DialogTitle>
           <DialogDescription>What do you want to get done today?</DialogDescription>
         </DialogHeader>
-        <form id='todo-form' className='grid gap-4 py-4' onSubmit={handleSubmit}>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Input id='title' name='title' placeholder='Todo title...' className='col-span-4' />
+        <form id="todo-form" className="grid gap-4 py-4" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Input id="title" name="title" placeholder="Todo title..." className="col-span-4" />
           </div>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Textarea id='description' name='description' placeholder='Description...' className='col-span-4' />
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Textarea id="description" name="description" placeholder="Description..." className="col-span-4" />
           </div>
         </form>
         <DialogFooter>
           <DialogTrigger asChild>
-            <Button type='submit' size='sm' form='todo-form'>
+            <Button type="submit" size="sm" form="todo-form">
               Add Todo
             </Button>
           </DialogTrigger>

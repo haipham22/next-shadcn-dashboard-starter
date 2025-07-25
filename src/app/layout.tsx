@@ -33,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const isScaled = activeThemeValue?.endsWith('-scaled')
 
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -58,8 +58,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <NextTopLoader showSpinner={false} />
         <NuqsAdapter>
           <ThemeProvider
-            attribute='class'
-            defaultTheme='system'
+            attribute="class"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
             enableColorScheme

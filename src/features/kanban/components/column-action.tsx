@@ -48,19 +48,19 @@ export function ColumnActions({ title, id }: { title: string; id: UniqueIdentifi
         <Input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className='mt-0! mr-auto text-base disabled:cursor-pointer disabled:border-none disabled:opacity-100'
+          className="mt-0! mr-auto text-base disabled:cursor-pointer disabled:border-none disabled:opacity-100"
           disabled={editDisable}
           ref={inputRef}
         />
       </form>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant='secondary' className='ml-1'>
-            <span className='sr-only'>Actions</span>
-            <DotsHorizontalIcon className='h-4 w-4' />
+          <Button variant="secondary" className="ml-1">
+            <span className="sr-only">Actions</span>
+            <DotsHorizontalIcon className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align='end'>
+        <DropdownMenuContent align="end">
           <DropdownMenuItem
             onSelect={() => {
               setIsEditDisable(!editDisable)
@@ -73,7 +73,7 @@ export function ColumnActions({ title, id }: { title: string; id: UniqueIdentifi
           </DropdownMenuItem>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)} className='text-red-600'>
+          <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)} className="text-red-600">
             Delete Section
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -89,7 +89,7 @@ export function ColumnActions({ title, id }: { title: string; id: UniqueIdentifi
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <Button
-              variant='destructive'
+              variant="destructive"
               onClick={() => {
                 // yes, you have to set a timeout
                 setTimeout(() => (document.body.style.pointerEvents = ''), 100)

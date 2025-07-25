@@ -34,9 +34,9 @@ export function ModeToggle() {
   )
 
   return (
-    <Button variant='secondary' size='icon' className='group/toggle size-8' onClick={handleThemeToggle}>
+    <Button variant="secondary" size="icon" className="group/toggle size-8" onClick={handleThemeToggle}>
       <IconBrightness />
-      <span className='sr-only'>Toggle theme</span>
+      <span className="sr-only">Toggle theme</span>
     </Button>
   )
 }

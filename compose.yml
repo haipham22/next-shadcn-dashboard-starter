@@ -1,0 +1,17 @@
+services:
+  pgsql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./.tmp/pgsql:/var/lib/postgresql/data
+  mailhog:
+    image: mailhog/mailhog
+    platform: linux/amd64
+    ports:
+      - '8025:8025'
+      - '1025:1025'
