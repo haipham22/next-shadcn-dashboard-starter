@@ -167,7 +167,7 @@ export function KanbanBoard() {
             <Fragment key={col.id}>
               <BoardColumn column={col} tasks={tasks.filter((task) => task.status === col.id)} />
               {index === columns?.length - 1 && (
-                <div className='w-[300px]'>
+                <div className="w-[300px]">
                   <NewSectionDialog />
                 </div>
               )}

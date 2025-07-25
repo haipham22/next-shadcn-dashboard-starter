@@ -33,19 +33,19 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onConfirm} loading={loading} />
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' className='h-8 w-8 p-0'>
-            <span className='sr-only'>Open menu</span>
-            <IconDotsVertical className='h-4 w-4' />
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <IconDotsVertical className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align='end'>
+        <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
           <DropdownMenuItem onClick={() => router.push(`/dashboard/product/${data.id}`)}>
-            <IconEdit className='mr-2 h-4 w-4' /> Update
+            <IconEdit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            <IconTrash className='mr-2 h-4 w-4' /> Delete
+            <IconTrash className="mr-2 h-4 w-4" /> Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

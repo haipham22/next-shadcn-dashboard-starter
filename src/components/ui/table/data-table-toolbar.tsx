@@ -28,23 +28,23 @@ export function DataTableToolbar<TData>({ table, children, className, ...props }
 
   return (
     <div
-      role='toolbar'
-      aria-orientation='horizontal'
+      role="toolbar"
+      aria-orientation="horizontal"
       className={cn('flex w-full items-start justify-between gap-2 p-1', className)}
       {...props}
     >
-      <div className='flex flex-1 flex-wrap items-center gap-2'>
+      <div className="flex flex-1 flex-wrap items-center gap-2">
         {columns.map((column) => (
           <DataTableToolbarFilter key={column.id} column={column} />
         ))}
         {isFiltered && (
-          <Button aria-label='Reset filters' variant='outline' size='sm' className='border-dashed' onClick={onReset}>
+          <Button aria-label="Reset filters" variant="outline" size="sm" className="border-dashed" onClick={onReset}>
             <Cross2Icon />
             Reset
           </Button>
         )}
       </div>
-      <div className='flex items-center gap-2'>
+      <div className="flex items-center gap-2">
         {children}
         <DataTableViewOptions table={table} />
       </div>
@@ -69,23 +69,23 @@ function DataTableToolbarFilter<TData>({ column }: DataTableToolbarFilterProps<T
               placeholder={columnMeta.placeholder ?? columnMeta.label}
               value={(column.getFilterValue() as string) ?? ''}
               onChange={(event) => column.setFilterValue(event.target.value)}
-              className='h-8 w-40 lg:w-56'
+              className="h-8 w-40 lg:w-56"
             />
           )
 
         case 'number':
           return (
-            <div className='relative'>
+            <div className="relative">
               <Input
-                type='number'
-                inputMode='numeric'
+                type="number"
+                inputMode="numeric"
                 placeholder={columnMeta.placeholder ?? columnMeta.label}
                 value={(column.getFilterValue() as string) ?? ''}
                 onChange={(event) => column.setFilterValue(event.target.value)}
                 className={cn('h-8 w-[120px]', columnMeta.unit && 'pr-8')}
               />
               {columnMeta.unit && (
-                <span className='bg-accent text-muted-foreground absolute top-0 right-0 bottom-0 flex items-center rounded-r-md px-2 text-sm'>
+                <span className="bg-accent text-muted-foreground absolute top-0 right-0 bottom-0 flex items-center rounded-r-md px-2 text-sm">
                   {columnMeta.unit}
                 </span>
               )}

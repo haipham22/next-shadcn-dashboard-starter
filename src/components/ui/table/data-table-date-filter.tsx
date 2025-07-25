@@ -124,11 +124,11 @@ export function DataTableDateFilter<TData>({ column, title, multiple }: DataTabl
       const dateText = hasSelectedDates ? formatDateRange(selectedDates) : 'Select date range'
 
       return (
-        <span className='flex items-center gap-2'>
+        <span className="flex items-center gap-2">
           <span>{title}</span>
           {hasSelectedDates && (
             <>
-              <Separator orientation='vertical' className='mx-0.5 data-[orientation=vertical]:h-4' />
+              <Separator orientation="vertical" className="mx-0.5 data-[orientation=vertical]:h-4" />
               <span>{dateText}</span>
             </>
           )}
@@ -142,11 +142,11 @@ export function DataTableDateFilter<TData>({ column, title, multiple }: DataTabl
     const dateText = hasSelectedDate ? formatDate(selectedDates[0]) : 'Select date'
 
     return (
-      <span className='flex items-center gap-2'>
+      <span className="flex items-center gap-2">
         <span>{title}</span>
         {hasSelectedDate && (
           <>
-            <Separator orientation='vertical' className='mx-0.5 data-[orientation=vertical]:h-4' />
+            <Separator orientation="vertical" className="mx-0.5 data-[orientation=vertical]:h-4" />
             <span>{dateText}</span>
           </>
         )}
@@ -157,14 +157,14 @@ export function DataTableDateFilter<TData>({ column, title, multiple }: DataTabl
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' size='sm' className='border-dashed'>
+        <Button variant="outline" size="sm" className="border-dashed">
           {hasValue ? (
             <div
-              role='button'
+              role="button"
               aria-label={`Clear ${title} filter`}
               tabIndex={0}
               onClick={onReset}
-              className='focus-visible:ring-ring rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-1 focus-visible:outline-none'
+              className="focus-visible:ring-ring rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-1 focus-visible:outline-none"
             >
               <XCircle />
             </div>
@@ -174,18 +174,18 @@ export function DataTableDateFilter<TData>({ column, title, multiple }: DataTabl
           {label}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0' align='start'>
+      <PopoverContent className="w-auto p-0" align="start">
         {multiple ? (
           <Calendar
             initialFocus
-            mode='range'
+            mode="range"
             selected={getIsDateRange(selectedDates) ? selectedDates : { from: undefined, to: undefined }}
             onSelect={onSelect}
           />
         ) : (
           <Calendar
             initialFocus
-            mode='single'
+            mode="single"
             selected={!getIsDateRange(selectedDates) ? selectedDates[0] : undefined}
             onSelect={onSelect}
           />

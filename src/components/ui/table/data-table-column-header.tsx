@@ -47,11 +47,11 @@ export function DataTableColumnHeader<TData, TValue>({
             <CaretSortIcon />
           ))}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='start' className='w-28'>
+      <DropdownMenuContent align="start" className="w-28">
         {column.getCanSort() && (
           <>
             <DropdownMenuCheckboxItem
-              className='[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto'
+              className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
               checked={column.getIsSorted() === 'asc'}
               onClick={() => column.toggleSorting(false)}
             >
@@ -59,7 +59,7 @@ export function DataTableColumnHeader<TData, TValue>({
               Asc
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              className='[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto'
+              className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
               checked={column.getIsSorted() === 'desc'}
               onClick={() => column.toggleSorting(true)}
             >
@@ -67,7 +67,7 @@ export function DataTableColumnHeader<TData, TValue>({
               Desc
             </DropdownMenuCheckboxItem>
             {column.getIsSorted() && (
-              <DropdownMenuItem className='[&_svg]:text-muted-foreground pl-2' onClick={() => column.clearSorting()}>
+              <DropdownMenuItem className="[&_svg]:text-muted-foreground pl-2" onClick={() => column.clearSorting()}>
                 <Cross2Icon />
                 Reset
               </DropdownMenuItem>
@@ -76,7 +76,7 @@ export function DataTableColumnHeader<TData, TValue>({
         )}
         {column.getCanHide() && (
           <DropdownMenuCheckboxItem
-            className='[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto'
+            className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
             checked={!column.getIsVisible()}
             onClick={() => column.toggleVisibility(false)}
           >

@@ -71,14 +71,14 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
         dragging: isOverlay ? 'overlay' : isDragging ? 'over' : undefined,
       })}
     >
-      <CardHeader className='space-between flex flex-row items-center border-b-2 p-4 text-left font-semibold'>
+      <CardHeader className="space-between flex flex-row items-center border-b-2 p-4 text-left font-semibold">
         <Button
           variant={'ghost'}
           {...attributes}
           {...listeners}
-          className='text-primary/50 relative -ml-2 h-auto cursor-grab p-1'
+          className="text-primary/50 relative -ml-2 h-auto cursor-grab p-1"
         >
-          <span className='sr-only'>{`Move column: ${column.title}`}</span>
+          <span className="sr-only">{`Move column: ${column.title}`}</span>
           <IconGripVertical />
         </Button>
         {/* <span className="mr-auto mt-0!"> {column.title}</span> */}
@@ -88,8 +88,8 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
         /> */}
         <ColumnActions id={column.id} title={column.title} />
       </CardHeader>
-      <CardContent className='flex grow flex-col gap-4 overflow-x-hidden p-2'>
-        <ScrollArea className='h-full'>
+      <CardContent className="flex grow flex-col gap-4 overflow-x-hidden p-2">
+        <ScrollArea className="h-full">
           <SortableContext items={tasksIds}>
             {tasks.map((task) => (
               <TaskCard key={task.id} task={task} />
@@ -114,15 +114,15 @@ export function BoardContainer({ children }: { children: React.ReactNode }) {
   })
 
   return (
-    <ScrollArea className='w-full rounded-md whitespace-nowrap'>
+    <ScrollArea className="w-full rounded-md whitespace-nowrap">
       <div
         className={variations({
           dragging: dndContext.active ? 'active' : 'default',
         })}
       >
-        <div className='flex flex-row items-start justify-center gap-4'>{children}</div>
+        <div className="flex flex-row items-start justify-center gap-4">{children}</div>
       </div>
-      <ScrollBar orientation='horizontal' />
+      <ScrollBar orientation="horizontal" />
     </ScrollArea>
   )
 }

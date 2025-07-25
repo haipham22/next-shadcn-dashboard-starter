@@ -25,26 +25,26 @@ export function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          aria-label='Toggle columns'
-          role='combobox'
-          variant='outline'
-          size='sm'
-          className='ml-auto hidden h-8 lg:flex'
+          aria-label="Toggle columns"
+          role="combobox"
+          variant="outline"
+          size="sm"
+          className="ml-auto hidden h-8 lg:flex"
         >
           <Settings2 />
           View
-          <CaretSortIcon className='ml-auto opacity-50' />
+          <CaretSortIcon className="ml-auto opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent align='end' className='w-44 p-0'>
+      <PopoverContent align="end" className="w-44 p-0">
         <Command>
-          <CommandInput placeholder='Search columns...' />
+          <CommandInput placeholder="Search columns..." />
           <CommandList>
             <CommandEmpty>No columns found.</CommandEmpty>
             <CommandGroup>
               {columns.map((column) => (
                 <CommandItem key={column.id} onSelect={() => column.toggleVisibility(!column.getIsVisible())}>
-                  <span className='truncate'>{column.columnDef.meta?.label ?? column.id}</span>
+                  <span className="truncate">{column.columnDef.meta?.label ?? column.id}</span>
                   <CheckIcon
                     className={cn('ml-auto size-4 shrink-0', column.getIsVisible() ? 'opacity-100' : 'opacity-0')}
                   />
