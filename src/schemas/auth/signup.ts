@@ -1,5 +1,6 @@
-import { passwordSchema } from '@/schemas/auth/password'
 import { z } from 'zod'
+
+import { passwordSchema } from '@/schemas/auth/password'
 
 export const signUpSchema = () => {
   return z
